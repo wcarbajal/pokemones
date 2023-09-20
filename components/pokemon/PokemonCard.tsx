@@ -7,7 +7,7 @@ interface Props{
 }
 export const PokemonCard:FC<Props> = ({pokemon}) => {
   return (
-    <Grid xs= {6} sm={3} md= {2} xl={1} key= {pokemon.id}>
+    <Grid xs= {12} sm= {6} md= {4} lg= {2} xl= {3} key= {pokemon.id}>
             <Card hoverable clickable>
                 <Card.Body css={{ p:1}}>
                     <Card.Image
@@ -19,7 +19,7 @@ export const PokemonCard:FC<Props> = ({pokemon}) => {
                 <Card.Footer>
                     <Row justify='space-between'>
                         <Text transform='capitalize'> {pokemon.name}</Text>
-                        <Text>#  {pokemon.id}</Text>
+                        <Text># -  {pokemon.id}</Text>
                     </Row>
                 </Card.Footer>
             </Card>
