@@ -3,7 +3,8 @@ import { Layout } from "@/components/layouts";
 import { NoFavorites } from "@/components/ui";
 import { Card, Container, Grid, Image, Text } from "@nextui-org/react";
 import { pokemons } from "@/utils";
-import { FavoritePokemons } from "@/components/ui/FavoritePokemons";
+import { FavoritePokemons } from "@/components/pokemon";
+
 
 const FavoritesPage = () => {
   const [favoritePokemons, setFavoritePokemons] = useState<number[]>([]);

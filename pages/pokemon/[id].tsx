@@ -2,10 +2,11 @@ import { useState } from "react";
 import { GetStaticProps, NextPage, GetStaticPaths } from "next";
 import { Layout } from "@/components/layouts"
 import { Button, Card, Container, Grid, Image, Text, Row } from '@nextui-org/react';
-import { useRouter } from "next/router";
+
 import { pokeApi } from "../../api/";
 import { Pokemon, PokemonListResponse, SmallPokemon } from "@/interfaces";
 import { existInFavorites, toggleFavorite } from "@/utils";
+import confetti from "canvas-confetti";
 
 
 
@@ -24,6 +25,18 @@ const PokemonPage: NextPage<Props> = ({pokemon}) => {
     const onToggleFavorite = () => {
        toggleFavorite(pokemon.id);
        setIsInFavorites(!isInFavorites);
+
+       if(isInFavorites) return;
+       confetti({
+        zIndex: 900,
+        particleCount: 100,
+        spread: 160,
+        angle: -100,
+        origin: {
+            x: 1,
+            y: 0,
+        }
+       })
     }
 
     return (
@@ -100,7 +113,7 @@ const PokemonPage: NextPage<Props> = ({pokemon}) => {
 
 // You should use getStaticPaths if you’re statically pre-rendering pages that use dynamic routes
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-
+    
     const pokemon151 = [...Array(151)].map( (value, index) => `${ index + 1}`);
     
 
